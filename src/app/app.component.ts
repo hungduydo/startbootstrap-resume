@@ -13,19 +13,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     }
 
     ngAfterViewInit() {
-        console.log();
-        const scripts = [];
-        scripts.push('https://code.jquery.com/jquery-3.2.1.min.js');
-        scripts.push('https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js');
-        scripts.push('https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js');
-        scripts.push('https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js');
-        scripts.forEach((element, index) => {
-            setTimeout(() => this.loadScript(element, index, (interIndex) => {
-                if (interIndex === 3) {
-                    this.initExtenalScript();
-                }
-            }), index * 300);
-        });
+        setTimeout(() => this.initExtenalScript(), 1000);
     }
 
     initExtenalScript() {
