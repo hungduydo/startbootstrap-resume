@@ -1,18 +1,24 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
-
+import { RouterModule } from '@angular/router';
+import { rootRouterConfig } from './app.routes';
 import { AppComponent } from './app.component';
-
+import { ExchangeComponent } from './components/exchange/exchange.component';
+import { ExchangeService } from './services';
+import { ResumeComponent } from './resume/resume.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ExchangeComponent,
+    ResumeComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    RouterModule.forRoot(rootRouterConfig, { useHash: true }),
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }

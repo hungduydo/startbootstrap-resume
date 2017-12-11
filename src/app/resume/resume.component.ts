@@ -1,19 +1,28 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, AfterViewChecked } from '@angular/core';
 declare var $: any;
 @Component({
-    selector: 'app-root',
-    templateUrl: './app.component.html',
-    styleUrls: ['./app.component.scss']
+    selector: 'app-resume',
+    templateUrl: './resume.component.html',
+    styleUrls: ['./resume.component.scss']
 })
-export class AppComponent implements OnInit, AfterViewInit {
-    title = 'app';
+export class ResumeComponent implements OnInit, AfterViewChecked  {
+    private isLoading = true;
+    constructor() { }
+
     ngOnInit() {
+        setTimeout(() => {
+            this.isLoading = false;
+            this.initExtenalScript();
+        }, 3000);
+    }
+
+    ngAfterViewChecked () {
 
     }
 
-    ngAfterViewInit() {
-
+    initExtenalScript() {
+        // Smooth scrolling using jQuery easing
         $('a.js-scroll-trigger[href*="#"]:not([href="#"])').click(function () {
             if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
                 let target = $(this.hash);
@@ -49,5 +58,4 @@ export class AppComponent implements OnInit, AfterViewInit {
             target: '#sideNav'
         });
     }
-
 }
