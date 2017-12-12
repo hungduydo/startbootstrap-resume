@@ -6,12 +6,14 @@ import { AppComponent } from './app.component';
 import { ExchangeComponent } from './components/exchange/exchange.component';
 import { ExchangeService } from './services';
 import { ResumeComponent } from './resume/resume.component';
+import { CurrencyConvertComponent } from './currency-convert/currency-convert.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ExchangeComponent,
-    ResumeComponent
+    ResumeComponent,
+    CurrencyConvertComponent
   ],
   imports: [
     BrowserModule,

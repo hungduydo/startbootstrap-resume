@@ -7,7 +7,7 @@ declare var $: any;
     styleUrls: ['./resume.component.scss']
 })
 export class ResumeComponent implements OnInit, AfterViewChecked  {
-    private isLoading = true;
+    public isLoading = true;
     constructor() { }
 
     ngOnInit() {
