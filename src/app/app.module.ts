@@ -7,6 +7,7 @@ import { ExchangeComponent } from './components/exchange/exchange.component';
 import { ExchangeService } from './services';
 import { ResumeComponent } from './resume/resume.component';
 import { CurrencyConvertComponent } from './currency-convert/currency-convert.component';
+import { HttpModule } from '@angular/http';
 
 @NgModule({
   declarations: [
@@ -17,9 +18,12 @@ import { CurrencyConvertComponent } from './currency-convert/currency-convert.co
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(rootRouterConfig, { useHash: true }),
+    HttpModule,
+    RouterModule.forRoot(rootRouterConfig),
   ],
-  providers: [],
+  providers: [
+    ExchangeService
+  ],
   bootstrap: [AppComponent]
 })
 

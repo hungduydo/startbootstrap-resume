@@ -1,3 +1,5 @@
-<p>
-  currency-convert works!
-</p>
+<div class="container">
+    <div class="row">
+        <input type="input" (input)="vndChange($event)" [value]="inputVND">{{'<=>'}}<input type="input" (input)="usdChange($event)" [value]="inputUSD">
+    </div>
+</div>

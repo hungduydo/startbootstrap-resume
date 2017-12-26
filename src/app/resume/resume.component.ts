@@ -6,8 +6,29 @@ declare var $: any;
     templateUrl: './resume.component.html',
     styleUrls: ['./resume.component.scss']
 })
-export class ResumeComponent implements OnInit, AfterViewChecked  {
+export class ResumeComponent implements OnInit, AfterViewChecked {
     public isLoading = true;
+    public index = 0;
+    public MENU_ITEMS = [{
+        'name': 'About',
+        'ref': 'about'
+    },
+    {
+        'name': 'Experience',
+        'ref': 'experience'
+    },
+    {
+        'name': 'Education',
+        'ref': 'education'
+    },
+    {
+        'name': 'Skills',
+        'ref': 'skills'
+    },
+    {
+        'name': 'Interests',
+        'ref': 'interests'
+    }];
     constructor() { }
 
     ngOnInit() {
@@ -17,7 +38,7 @@ export class ResumeComponent implements OnInit, AfterViewChecked  {
         }, 3000);
     }
 
-    ngAfterViewChecked () {
+    ngAfterViewChecked() {
 
     }
 
@@ -36,16 +57,25 @@ export class ResumeComponent implements OnInit, AfterViewChecked  {
             }
         });
 
-        $('html, body').on('DOMMouseScroll mousewheel', function (event) {
+        $('html, body').on('DOMMouseScroll mousewheel', (event) => {
+            let target;
             if (event.originalEvent.detail > 0 || event.originalEvent.wheelDelta < 0) {
                 // scroll down
-                console.log('Down in ');
+                this.index += 1;
+                if (this.index > this.MENU_ITEMS.length - 1) {
+                    this.index = this.MENU_ITEMS.length - 1;
+                }
+                target = $('#' + this.MENU_ITEMS[this.index].ref);
             } else {
-                // scroll up
-                console.log('Up');
+                this.index = this.index <= 0 ? 0 : this.index - 1;
+                target = $('#' + this.MENU_ITEMS[this.index].ref);
             }
+
+            $('html, body').animate({
+                scrollTop: (target.offset().top)
+            }, 1000, 'easeInOutExpo');
             // prevent page fom scrolling
-            // return false;
+            return false;
         });
 
         // Closes responsive menu when a scroll trigger link is clicked
@@ -54,8 +84,8 @@ export class ResumeComponent implements OnInit, AfterViewChecked  {
         });
 
         // Activate scrollspy to add active class to navbar items on scroll
-        $('body').scrollspy({
-            target: '#sideNav'
-        });
+        // $('body').scrollspy({
+        //     target: '#sideNav'
+        // });
     }
 }
