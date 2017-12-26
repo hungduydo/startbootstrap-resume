@@ -17,4 +17,11 @@ export class CurrencyConvertComponent implements OnInit {
         });
     }
 
+    vndChange(event) {
+
+    }
+
+    usdChange(event) {
+
+    }
 }
